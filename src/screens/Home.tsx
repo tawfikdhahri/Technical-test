@@ -47,7 +47,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     value: 0,
   });
 
-  const [messageType, setMessageType] = useState("");
+  const [messageType, setMessageType] = useState<string>("");
 
   const dispatch = useDispatch();
   const toastRef = useRef<any>();
@@ -55,7 +55,6 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         let cats = data.map((i: string, index: number) => ({
           label: i,
           value: index,
@@ -75,7 +74,6 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setIsFetching(false);
         // let pByCat: any = {};
         // data.map((i: ProductType) => {
@@ -102,8 +100,6 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
     fetchCategories();
     fetchData();
   }, [selectedCategory]);
-
-  console.log(selectedCategory);
 
   const addProductToCart = useCallback(
     (item: ProductType) => {

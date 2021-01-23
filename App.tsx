@@ -12,29 +12,15 @@ import * as Permissions from "expo-permissions";
 
 export default function App() {
   const [permission, askForPermission] = Permissions.usePermissions(
-    Permissions.NOTIFICATIONS,
-    {
-      ask: true,
-    }
+    Permissions.NOTIFICATIONS
   );
 
-  const reqNotifPerm = useCallback(async () => {
-    const {
-      status: existingStatus,
-    } = await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-
-    if (existingStatus !== "granted") {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== "granted") {
-      alert("Failed to get push token for push notification!");
-      return;
-    }
-  }, []);
   useEffect(() => {
-    askForPermission();
+    askForPermission()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
     // reqNotifPerm();
   }, []);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import theme from "../../../assets/theme";
 
@@ -20,8 +20,6 @@ interface Props {
 }
 
 const FetchResult: React.FC<Props> = ({ loading, dataLength, children }) => {
-  console.log({ dataLength });
-
   return (
     <View style={styles.container}>
       {loading ? (
@@ -39,4 +37,4 @@ const FetchResult: React.FC<Props> = ({ loading, dataLength, children }) => {
   );
 };
 
-export default FetchResult;
+export default memo(FetchResult);

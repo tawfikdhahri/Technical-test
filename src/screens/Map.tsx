@@ -11,10 +11,8 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 import theme from "../../assets/theme";
-import { useDispatch, useSelector } from "react-redux";
-import * as Permissions from "expo-permissions";
-import { addAddresse, RootState } from "../store";
-import { NavigationContainer } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { addAddresse } from "../store";
 
 const AnimatedMapView = Animated.createAnimatedComponent(MapView);
 const AnimatedMarker = Animated.createAnimatedComponent(Marker);
@@ -27,9 +25,6 @@ const Map: React.FC<MapProps> = ({ navigation }) => {
   const [location, setLocation] = useState<any>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
-  const [permission, askForPermission] = Permissions.usePermissions(
-    Permissions.LOCATION
-  );
 
   const requestPermession = useCallback(async () => {
     let { status } = await Location.requestPermissionsAsync();
@@ -38,7 +33,7 @@ const Map: React.FC<MapProps> = ({ navigation }) => {
 
     let location = await Location.getCurrentPositionAsync({});
     setLocation(location?.coords);
-  }, []);
+  }, [Location]);
 
   const handlePermessionReq = useCallback(() => {
     requestPermession()
