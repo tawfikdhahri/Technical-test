@@ -1,0 +1,21 @@
+export default {
+  colors: {
+    black: "#171717",
+    white: "#FFFFFF",
+    background: "#F9F9F9",
+    primary: "#012F2D",
+    primaryDark: "#0A2624",
+    primaryLight: "#678281",
+    secondary: "#00D975",
+    secondaryDark: "#04BC67",
+    secondaryLight: "#66E8AC",
+    grey1: "#464646",
+    grey2: "#A2A2A2",
+    grey3: "#F5F5F5",
+    grey4: "#707073",
+    grey5: "#F2F2F2",
+    labelError: "#EF4933",
+    bleuLight: "#F9F9F9",
+    red: "#FF7070",
+  },
+};
