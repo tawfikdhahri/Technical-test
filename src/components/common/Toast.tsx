@@ -1,4 +1,4 @@
-import React, { forwardRef, Component } from "react";
+import React, { forwardRef, Component, memo } from "react";
 
 import Toast from "react-native-easy-toast";
 import { View, Text } from "react-native";
@@ -11,37 +11,33 @@ interface ToastProps {
   position: any;
 }
 
-export const ShowToast = ({
-  message,
-  type,
-}: {
-  type: string;
-  message: string;
-}): JSX.Element => (
-  <View
-    style={{
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-around",
-      padding: 10,
-    }}
-  >
-    <Icon
-      name={type === "success" ? "checkcircle" : "exclamationcircle"}
-      size={25}
-      color={theme.colors.white}
-    />
-    <Text
+export const ShowToast = memo(
+  ({ message, type }: { type: string; message: string }): JSX.Element => (
+    <View
       style={{
-        color: theme.colors.white,
-        marginLeft: 20,
-        fontSize: 18,
-        lineHeight: 21,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
+        padding: 10,
       }}
     >
-      {message}
-    </Text>
-  </View>
+      <Icon
+        name={type === "success" ? "checkcircle" : "exclamationcircle"}
+        size={25}
+        color={theme.colors.white}
+      />
+      <Text
+        style={{
+          color: theme.colors.white,
+          marginLeft: 20,
+          fontSize: 18,
+          lineHeight: 21,
+        }}
+      >
+        {message}
+      </Text>
+    </View>
+  )
 );
 
 const ToastComponent = forwardRef<any, ToastProps>(
@@ -69,4 +65,4 @@ const ToastComponent = forwardRef<any, ToastProps>(
 
 ToastComponent.displayName = "Toast";
 
-export default ToastComponent;
+export default memo(ToastComponent);

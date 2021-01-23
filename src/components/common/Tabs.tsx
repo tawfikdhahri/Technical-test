@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, memo } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import theme from "../../../assets/theme";
 import { ScrollView } from "react-native-gesture-handler";
@@ -140,4 +140,4 @@ const Tabs: React.FC<TabsProps> = ({
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

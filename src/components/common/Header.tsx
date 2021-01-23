@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import theme from "../../../assets/theme";
 import { AntDesign as Icon } from "@expo/vector-icons";
@@ -63,4 +63,4 @@ const Header: React.FC<Props> = ({ title, rightIcon, onRightClick }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
